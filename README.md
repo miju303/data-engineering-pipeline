@@ -28,7 +28,14 @@ The pipeline runs daily, automated using Apache Airflow.
 ## What I Learned
 This project covers the full data engineering lifecycle: ingestion, transformation, loading, and automation.
 
+## Dashboard
+An interactive Streamlit dashboard (`dashboard.py`) visualizes the cleaned sales data with:
+- Key metrics (total sales, profit, orders, average order value)
+- Sales by category and region
+- Sales trend over time
+- Top 10 products by sales
+- Filterable by year and region
+
 ## Future Improvements
-- [ ] Add visualization dashboard
 - [ ] Add data quality checks
 - [ ] Containerize with Docker
