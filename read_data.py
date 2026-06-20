@@ -1,0 +1,18 @@
+import pandas as pd
+df=pd.read_csv("SuperStoreOrders.csv")
+print(df.head())
+print(df.info())
+print(df.columns)
+print(df["sales"].head(10))
+df["sales"]=df["sales"].str.replace(",","",regex=False)
+df["sales"]=df["sales"].astype(float)
+print(df["sales"].dtype)
+df["order_date"]=pd.to_datetime(df["order_date"],format="mixed",dayfirst=True)
+df["ship_date"]=pd.to_datetime(df["ship_date"],format="mixed",dayfirst=True)
+print(df["order_date"].dtype)
+print(df["order_date"].head())
+print(df["ship_date"].head())
+from sqlalchemy import create_engine 
+engine=create_engine("postgresql://postgres:miju@localhost:5432/salesdb")
+df.to_sql("orders",engine,if_exists="replace",index=False)
+print("Data has been successfully installed")
